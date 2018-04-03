@@ -3,6 +3,13 @@ class CommandService {
         this.commands = new Map();
     }
 
+    keys() {
+        let keys = [];
+        this.commands.forEach( ($, index) => keys.push(index) );
+
+        return keys;
+    }
+
     register(key, callback) {
         this.commands.set(key, callback);
     }

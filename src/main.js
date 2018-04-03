@@ -13,6 +13,13 @@ client.on("message", message => {
         let command = args[0];
         args = args.splice(1);
 
+        if ( command == 'help' || command == 'commands' ) {
+            let msg = "Available Commands are: \n";
+            CommandService.keys().forEach( key => msg += key + "\n" );
+            message.channel.send(msg);
+            return;
+        }
+
         if ( CommandService.has(command) ) {
             CommandService.run(command, message, args);
         }
