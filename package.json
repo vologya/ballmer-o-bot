@@ -4,11 +4,12 @@
   "description": " A Discord bot about the great Steve Ballmer himself.",
   "main": "./src/main.js",
   "scripts": {
+    "start": "node ./src/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vologya/ballmer-o-bot"
+    "url": "https://github.com/vologya/ballmer-o-bot"
   },
   "author": "Vologya",
   "license": "MIT",
