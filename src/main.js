@@ -13,7 +13,7 @@ client.on("message", message => {
         let command = args[0];
         args = args.splice(1);
 
-        if ( command == 'help' || command == 'commands' ) {
+        if ( ['', 'help', 'info', 'list', 'commands'].indexOf(command) >= 0 ) {
             var embed = new Discord.RichEmbed()
                 .setTitle('List of Available Commands');
             CommandService.keys().forEach( (description, key) => embed.addField(`!${key}`, description) );
