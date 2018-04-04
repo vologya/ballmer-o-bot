@@ -21,8 +21,8 @@ class CommandService {
         return this.commands.has(key);
     }
 
-    run(key, message, args) {
-        this.commands.get(key).callback(message,args);
+    run(key, message, args, client, Discord) {
+        this.commands.get(key).callback(message, args, client, Discord);
     }
 }
 

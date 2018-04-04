@@ -1,10 +1,14 @@
 const axios = require('axios');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const Discord = require('discord.js');
 const CommandService = require('../CommandService.js');
 
-CommandService.register('http', 'Get a brief description of an HTTP Status Code.', (message, args) => {
+CommandService.register('http', 'Get a brief description of an HTTP Status Code.', (message, args, _, Discord) => {
+    if ( !args[0] ) {
+        message.channel.send('You must provide a valid status code!');
+        return ;
+    }
+
     let url = `https://httpstatuses.com/${args[0]}`;
     axios.get(url).then( response => {
         let dom = new JSDOM(response.data);
