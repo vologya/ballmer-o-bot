@@ -22,7 +22,7 @@ client.on("message", message => {
         }
 
         if ( CommandService.has(command) ) {
-            CommandService.run(command, message, args);
+            CommandService.run(command, message, args, client, Discord);
         }
     }
 });
