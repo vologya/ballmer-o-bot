@@ -4,14 +4,17 @@ class CommandService {
     }
 
     keys() {
-        let keys = [];
-        this.commands.forEach( ($, index) => keys.push(index) );
+        let keys = new Map();
+        this.commands.forEach( (command, key) => keys.set(key, command.description) );
 
         return keys;
     }
 
-    register(key, callback) {
-        this.commands.set(key, callback);
+    register(key, description, callback) {
+        this.commands.set(key, {
+            description: description,
+            callback: callback
+        });
     }
 
     has(key) {
@@ -19,7 +22,7 @@ class CommandService {
     }
 
     run(key, message, args) {
-        this.commands.get(key)(message,args);
+        this.commands.get(key).callback(message,args);
     }
 }
 

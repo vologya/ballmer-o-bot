@@ -14,9 +14,10 @@ client.on("message", message => {
         args = args.splice(1);
 
         if ( command == 'help' || command == 'commands' ) {
-            let msg = "Available Commands are: \n";
-            CommandService.keys().forEach( key => msg += key + "\n" );
-            message.channel.send(msg);
+            var embed = new Discord.RichEmbed()
+                .setTitle('List of Available Commands');
+            CommandService.keys().forEach( (description, key) => embed.addField(`!${key}`, description) );
+            message.channel.send(embed);
             return;
         }
 
