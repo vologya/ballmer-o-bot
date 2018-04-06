@@ -1,7 +1,6 @@
 const CommandService = require('../CommandService.js');
 
 CommandService.register('nick', 'Change the username of the Bot.', (message, args, client) => {
-    // if(!message.member || !message.member.hasPermission("Administrator"))
     if(!message.member || !message.member.roles.some(r=>["Administrator", "Moderator", "Dankó Pisták"].includes(r.name)) )
         return message.reply("Who the hell do you think you are?!");
 
@@ -19,7 +18,7 @@ CommandService.register('nick', 'Change the username of the Bot.', (message, arg
 });
 
 CommandService.register('avatar', 'Change the avatar of the Bot.', (message, args, client) => {
-    if(!message.member || !message.member.hasPermission("Administrator"))
+    if(!message.member || !message.member.roles.some(r=>["Administrator", "Moderator", "Dankó Pisták"].includes(r.name)) )
         return message.reply("Who the hell do you think you are?!");
 
     let avatar = args.join(" ");
